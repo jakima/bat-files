@@ -1,14 +1,19 @@
 @echo off
 setlocal
+set "validExtension=txt"
+if /i not "%~1"=="do" goto:skipExtChange
+set "validExtension=todo"
+SHIFT /1
+:skipExtChange
 if not "%~1"=="" set "custTxtName=%~n1"
-pushd "%CD%"
 if defined custTxtName (
-type nul>"%custTxtName%.txt"
+type nul>"%custTxtName%.%validExtension%"
 goto:skipTxtCreationProcess
 )
 call bdt
-echo Date=%dd% Month=%mm% Year=%yy%
-type nul>"_%yy:~-2%%mm%%dd%.txt"
+pushd "%CD%"
+echo Date=%_dd% Month=%_mm% Year=%_yy%
+type nul>"_%_yy:~-2%%_mm%%_dd%.%validExtension%"
 :skipTxtCreationProcess
 popd
 endlocal

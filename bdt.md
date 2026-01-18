@@ -1,0 +1,1 @@
+something to use in other scripts to quickly get yyyy mm dd

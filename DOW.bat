@@ -7,7 +7,7 @@ if not defined datep set /p "datep=Enter dd[-mm[-[yy]yy]] "
 for /f "tokens=1-3 delims=+-./\ " %%a in ("%datep%") do ^
 set datep=%%a&set monthp=%%b&set yearp=%%c
 call bdt
-set actDate=%dd%&set actMonth=%mm%&set actYear=%yy%
+set actDate=%_dd%&set actMonth=%_mm%&set actYear=%_yy%
 if not defined datep set datep=%actDate%
 if not defined monthp set monthp=%actMonth%
 if not defined yearp set yearp=%actYear%
@@ -55,3 +55,4 @@ set /a _mod100=_val %% 100, _mod4=_mod100 %% 4, _mod400=_val %% 400
 if %_mod100% gtr 0 if %_mod4% equ 0 set /a _isLeap-=1
 if %_mod100% equ 0 if %_mod400% equ 0 set /a _isLeap-=1
 exit /b %_isLeap%
+
